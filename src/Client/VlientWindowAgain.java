@@ -51,16 +51,17 @@ public class VlientWindowAgain {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setTitle("Chat Window");
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(100, 100, 508, 333);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
 		//frame.getContentPane().setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		
 		//textField = new JTextField();
 		//frame.getContentPane().add(textField, BorderLayout.NORTH);
 		
-		frame.getContentPane().add(textField, BorderLayout.NORTH);
-		frame.getContentPane().setLayout(new BorderLayout(0, 0));
+		//frame.getContentPane().add(textField, BorderLayout.NORTH);
+		//frame.getContentPane().setLayout(new BorderLayout(0, 0));
 		
 		TextArea textArea= new TextArea();
 		textArea.setEditable(false);
@@ -85,7 +86,7 @@ public class VlientWindowAgain {
 		panel_1.add(btnNewButton);
 		
 		
-		textField.setColumns(10);
+		//textField_1.setColumns(40);
 	}
 
 }
