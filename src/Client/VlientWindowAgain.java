@@ -11,12 +11,18 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.FlowLayout;
 import javax.swing.JPanel;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class VlientWindowAgain {
 
 	private JFrame frame;
 	private JTextField textField;
-	private JTextField textField_1;
+	private JTextField messageField;
+	
+	private static TextArea textArea= new TextArea();
+	
+	private Client client;
 
 	/**
 	 * Launch the application.
@@ -26,12 +32,15 @@ public class VlientWindowAgain {
 			public void run() {
 				try 
 				{
+					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+					
 					VlientWindowAgain window = new VlientWindowAgain();
 					window.frame.setVisible(true);
 					
-					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+					
 				} 
-				catch (Exception e) {
+				catch (Exception e) 
+				{
 					e.printStackTrace();
 				}
 			}
@@ -41,8 +50,10 @@ public class VlientWindowAgain {
 	/**
 	 * Create the application.
 	 */
-	public VlientWindowAgain() {
+	public VlientWindowAgain() 
+	{
 		initialize();
+		client=new Client("localhost",6056);
 	}
 
 	/**
@@ -63,7 +74,7 @@ public class VlientWindowAgain {
 		//frame.getContentPane().add(textField, BorderLayout.NORTH);
 		//frame.getContentPane().setLayout(new BorderLayout(0, 0));
 		
-		TextArea textArea= new TextArea();
+		
 		textArea.setEditable(false);
 		//textArea.setEditable(false);
 		
@@ -78,15 +89,26 @@ public class VlientWindowAgain {
 		frame.getContentPane().add(panel_1, BorderLayout.SOUTH);
 		panel_1.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
-		textField_1 = new JTextField();
-		panel_1.add(textField_1);
-		textField_1.setColumns(40);
+		messageField = new JTextField();
+		panel_1.add(messageField);
+		messageField.setColumns(40);
 		
 		JButton btnNewButton = new JButton("Send");
+		btnNewButton.addActionListener(
+		e->
+			{
+				
+			}
+		);
 		panel_1.add(btnNewButton);
 		
-		
+		frame.setLocationRelativeTo(null);
 		//textField_1.setColumns(40);
+	}
+	
+	public static void PrintMessageToConsole(String message)
+	{
+		textArea.setText(textArea.getText()+message+"\n");
 	}
 
 }
