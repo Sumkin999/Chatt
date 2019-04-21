@@ -41,6 +41,7 @@ public class Server
 	{
 		for(ClientInfo clientInfo :clientsList)
 		{
+			System.out.println("SEND!");
 			Send(message,clientInfo.GetInetAdress(),clientInfo.GetPort());
 		}
 	}
@@ -120,9 +121,10 @@ public class Server
 	{
 		if(message.startsWith("\\con:"))
 		{
+			System.out.println("CON!");
 			String _name=message.substring(message.indexOf(":")+1);
 			clientsList.add(new ClientInfo(_name, clientId++, datagrampacket.getAddress(), datagrampacket.getPort()));
-			
+			System.out.println(clientsList.size()+"CON!");
 			Broadcast("User "+_name+" connected!");
 			
 			return true;

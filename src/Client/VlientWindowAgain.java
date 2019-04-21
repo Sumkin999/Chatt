@@ -4,15 +4,19 @@ import java.awt.EventQueue;
 import java.awt.TextArea;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import java.awt.BorderLayout;
 import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.FlowLayout;
 import javax.swing.JPanel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.DropMode;
+import java.awt.Color;
 
 public class VlientWindowAgain {
 
@@ -20,7 +24,7 @@ public class VlientWindowAgain {
 	private JTextField textField;
 	private JTextField messageField;
 	
-	private static TextArea textArea= new TextArea();
+	private static JTextArea txtrAfasfasf= new JTextArea();
 	
 	private Client client;
 
@@ -53,7 +57,8 @@ public class VlientWindowAgain {
 	public VlientWindowAgain() 
 	{
 		initialize();
-		client=new Client("localhost",6056);
+		String name=JOptionPane.showInputDialog("Enter your name");
+		client=new Client(name,"localhost",6056);
 	}
 
 	/**
@@ -64,26 +69,16 @@ public class VlientWindowAgain {
 		frame.setTitle("Chat Window");
 		frame.setBounds(100, 100, 508, 333);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		//frame.getContentPane().setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-		
-		
-		//textField = new JTextField();
-		//frame.getContentPane().add(textField, BorderLayout.NORTH);
-		
-		//frame.getContentPane().add(textField, BorderLayout.NORTH);
-		//frame.getContentPane().setLayout(new BorderLayout(0, 0));
-		
-		
-		textArea.setEditable(false);
+		txtrAfasfasf.setBackground(Color.GREEN);
+		txtrAfasfasf.setForeground(Color.RED);
+		//txtrAfasfasf.setDropMode(DropMode.ON);
+		txtrAfasfasf.setColumns(20);
+		txtrAfasfasf.setTabSize(0);
+		txtrAfasfasf.setRows(2);
 		//textArea.setEditable(false);
 		
-		JScrollPane scrollPane = new JScrollPane(textArea);
+		JScrollPane scrollPane = new JScrollPane(txtrAfasfasf);
 		frame.getContentPane().add(scrollPane,BorderLayout.CENTER);
-		
-		JPanel panel = new JPanel();
-		frame.getContentPane().add(panel);
-		panel.setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel_1 = new JPanel();
 		frame.getContentPane().add(panel_1, BorderLayout.SOUTH);
@@ -108,7 +103,14 @@ public class VlientWindowAgain {
 	
 	public static void PrintMessageToConsole(String message)
 	{
-		textArea.setText(textArea.getText()+message+"\n");
+		System.out.println("       M1 "+message);
+		txtrAfasfasf.setText(txtrAfasfasf.getText()+message+"\n");
 	}
+	
+	/*private static void PrintTOConsole(String message)
+	{
+		System.out.println("M2 "+message);
+		txtrAfasfasf.setText(txtrAfasfasf.getText()+message+"\n");
+	}*/
 
 }
