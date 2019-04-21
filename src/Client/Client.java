@@ -5,6 +5,8 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 
+
+
 import Server.ClientInfo;
 import Server.Server;
 
@@ -15,13 +17,15 @@ public class Client
 	private int port;
 	
 	private boolean isServerRunning;
-	
+	private String myName;
 	
 	
 	public Client(String name,String adres,int _port) 
 	{
 		try 
 		{
+			myName=name;
+			
 			inetAdress=InetAddress.getByName(adres);
 			port=_port;
 			
@@ -65,7 +69,7 @@ public class Client
 						
 						//e is end of message
 						//MANAGE MESSAGE
-						//if(!IsComand(message,packet))
+						if(!IsComand(message,packet))
 						{
 							//PRINT MESSAGE
 							VlientWindowAgain.PrintMessageToConsole(message);
@@ -104,6 +108,10 @@ public class Client
 		
 		try 
 		{
+			if(!(message.startsWith("\\")))
+			{
+				message=myName+" : "+message;
+			}
 			message+="\\e";
 			byte[] data=message.getBytes();
 			DatagramPacket datagramPacket=new DatagramPacket(data, data.length,inetAdress,port);
