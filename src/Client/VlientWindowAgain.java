@@ -92,8 +92,12 @@ public class VlientWindowAgain {
 		btnNewButton.addActionListener(
 		e->
 			{
-				client.Send(messageField.getText());
-				messageField.setText("");
+				if(!messageField.getText().equals(""))
+				{
+					client.Send(messageField.getText());
+					messageField.setText("");
+				}
+				
 			}
 		);
 		panel_1.add(btnNewButton);
