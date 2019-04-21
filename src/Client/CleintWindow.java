@@ -18,13 +18,14 @@ import java.awt.event.ActionEvent;
 import javax.swing.DropMode;
 import java.awt.Color;
 
-public class VlientWindowAgain {
+public class CleintWindow 
+{
 
 	private JFrame frame;
 	private JTextField textField;
 	private JTextField messageField;
 	
-	private static JTextArea txtrAfasfasf= new JTextArea();
+	private static JTextArea textFrame= new JTextArea();
 	
 	private Client client;
 
@@ -38,7 +39,7 @@ public class VlientWindowAgain {
 				{
 					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 					
-					VlientWindowAgain window = new VlientWindowAgain();
+					CleintWindow window = new CleintWindow();
 					window.frame.setVisible(true);
 					
 					
@@ -54,7 +55,7 @@ public class VlientWindowAgain {
 	/**
 	 * Create the application.
 	 */
-	public VlientWindowAgain() 
+	public CleintWindow() 
 	{
 		initialize();
 		String name=JOptionPane.showInputDialog("Enter your name");
@@ -69,15 +70,15 @@ public class VlientWindowAgain {
 		frame.setTitle("Chat Window");
 		frame.setBounds(100, 100, 508, 333);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		txtrAfasfasf.setBackground(Color.GREEN);
-		txtrAfasfasf.setForeground(Color.RED);
-		//txtrAfasfasf.setDropMode(DropMode.ON);
-		txtrAfasfasf.setColumns(20);
-		txtrAfasfasf.setTabSize(0);
-		txtrAfasfasf.setRows(2);
-		//textArea.setEditable(false);
+		textFrame.setBackground(Color.GREEN);
+		textFrame.setForeground(Color.RED);
+
+		textFrame.setColumns(20);
+		textFrame.setTabSize(0);
+		textFrame.setRows(2);
+		textFrame.setEditable(false);
 		
-		JScrollPane scrollPane = new JScrollPane(txtrAfasfasf);
+		JScrollPane scrollPane = new JScrollPane(textFrame);
 		frame.getContentPane().add(scrollPane,BorderLayout.CENTER);
 		
 		JPanel panel_1 = new JPanel();
@@ -103,19 +104,14 @@ public class VlientWindowAgain {
 		panel_1.add(btnNewButton);
 		
 		frame.setLocationRelativeTo(null);
-		//textField_1.setColumns(40);
 	}
 	
 	public static void PrintMessageToConsole(String message)
 	{
 		System.out.println("       M1 "+message);
-		txtrAfasfasf.setText(txtrAfasfasf.getText()+message+"\n");
+		textFrame.setText(textFrame.getText()+message+"\n");
 	}
 	
-	/*private static void PrintTOConsole(String message)
-	{
-		System.out.println("M2 "+message);
-		txtrAfasfasf.setText(txtrAfasfasf.getText()+message+"\n");
-	}*/
+	
 
 }

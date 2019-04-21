@@ -72,7 +72,7 @@ public class Client
 						if(!IsComand(message,packet))
 						{
 							//PRINT MESSAGE
-							VlientWindowAgain.PrintMessageToConsole(message);
+							CleintWindow.PrintMessageToConsole(message);
 						}
 						
 					}
